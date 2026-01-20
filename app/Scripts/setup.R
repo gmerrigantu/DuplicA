@@ -1,8 +1,16 @@
 
 ############################################################
-# Change this to your path:
-path_to_duplica <- '/app'
-#path_to_duplica <- "C:/Users/NathanD/Downloads/DuplicA/app"
+# Auto-detect path - works in both Docker and local environments
+if (file.exists("/app/Scripts/setup.R")) {
+  # Running in Docker
+  path_to_duplica <- "/app"
+} else if (file.exists("/Users/grantmerrigan/Documents/DuplicA/app/Scripts/setup.R")) {
+  # Running locally on Mac
+  path_to_duplica <- "/Users/grantmerrigan/Documents/DuplicA/app"
+} else {
+  # Fallback - try to detect from current file location
+  path_to_duplica <- dirname(dirname(sys.frame(1)$ofile))
+}
 ############################################################
 
 
@@ -30,6 +38,13 @@ library(RColorBrewer)
 library(jsonlite)
 library(future)
 library(furrr)
+
+# Load clusterProfiler (used by model_GO.R) - optional to avoid startup errors
+tryCatch({
+  suppressPackageStartupMessages(library(clusterProfiler))
+}, error = function(e) {
+  warning("clusterProfiler not available - GO analysis will not work. Install with: BiocManager::install('clusterProfiler')")
+})
 
 #library(r3dmol)
 #library(httr)

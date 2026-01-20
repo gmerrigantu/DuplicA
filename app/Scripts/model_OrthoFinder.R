@@ -25,6 +25,9 @@ main_OrthoFinder <- function(protein_folder, is_dna = FALSE, method = "dendrobla
   
   path_to_orthofinder <- paste0(here_duplica, '/Dependencies/OrthoFinder/orthofinder')
   
+  # Prefer the system-installed diamond (avoids AVX-only bundled binary on some platforms)
+  Sys.setenv(PATH = paste("/usr/bin", Sys.getenv("PATH"), sep = ":"))
+  
   # base command
   command <- paste(path_to_orthofinder, "-f", shQuote(protein_folder))
   

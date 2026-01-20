@@ -1,0 +1,271 @@
+
+-> Starting proteome retrieval of 'Drosophila melanogaster' from ensembl ...
+
+
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 GET /page-data/Visualization/page-data.json
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 GET /page-data/Modelinfo/page-data.json
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 Returned 304 in 8 ms
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 Returned 304 in 6 ms
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 GET /page-data/Visualization/page-data.json
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 GET /page-data/Modelinfo/page-data.json
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 Returned 304 in 5 ms
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 Returned 304 in 1 ms
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 GET /page-data/app-data.json
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 Returned 304 in 1 ms
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 GET /component---src-pages-modelinfo-js-382cdb99363e6cd630cb.js
+ HTTP  1/7/2026 3:33:58 PM 192.168.65.1 Returned 304 in 8 ms
+ HTTP  1/7/2026 3:34:01 PM 192.168.65.1 GET /page-data/Workflow/page-data.json
+ HTTP  1/7/2026 3:34:01 PM 192.168.65.1 Returned 304 in 9 ms
+ HTTP  1/7/2026 3:34:01 PM 192.168.65.1 GET /page-data/Workflow/page-data.json
+ HTTP  1/7/2026 3:34:01 PM 192.168.65.1 Returned 304 in 5 ms
+ HTTP  1/7/2026 3:34:04 PM 192.168.65.1 GET /page-data/About/page-data.json
+ HTTP  1/7/2026 3:34:04 PM 192.168.65.1 Returned 304 in 5 ms
+ HTTP  1/7/2026 3:34:04 PM 192.168.65.1 GET /page-data/About/page-data.json
+ HTTP  1/7/2026 3:34:04 PM 192.168.65.1 Returned 304 in 3 ms
+-> The PEP.FA has been downloaded to '/app/Results/public_datasets_output/protein_data' and has been named 'Drosophila_melanogaster.BDGP6.54.pep.all.fa'.
+-> Unzipping downloaded file ...
+
+
+-> Starting proteome retrieval of 'Drosophila simulans' from ensembl ...
+
+
+-> The PEP.FA has been downloaded to '/app/Results/public_datasets_output/protein_data' and has been named 'Drosophila_simulans_gca016746395v2rs.Prin_Dsim_3.1.pep.all.fa'.
+-> Unzipping downloaded file ...
+
+
+-> Starting proteome retrieval of 'Drosophila sechellia' from ensembl ...
+
+
+-> The PEP.FA has been downloaded to '/app/Results/public_datasets_output/protein_data' and has been named 'Drosophila_sechellia_gca004382195v2rs.ASM438219v2.pep.all.fa'.
+-> Unzipping downloaded file ...
+
+
+A summary file (which can be used as supplementary information file in publications) containig retrieval information for all species has been stored at '/app/Results/public_datasets_output/protein_data/documentation/protein_data_summary.csv'.
+- List of completed organisms updated in: /app/Results/public_datasets_output/protein_data/proteome_done_organisms.csv
+
+
+Please cite: Drost HG, Paszkowski J. Biomartr: genomic data retrieval with R. Bioinformatics (2017) 33(8): 1216-1217. doi:10.1093/bioinformatics/btw821.
+Starting CDS retrieval of the following CDSs: Drosophila melanogaster, Drosophila simulans, Drosophila sechellia ...
+Generating folder /app/Results/public_datasets_output/cds_data ...
+
+
+
+
+-> Starting CDS retrieval of 'Drosophila melanogaster' from ensembl ...
+
+
+-> The CDS has been downloaded to '/app/Results/public_datasets_output/cds_data' and has been named 'Drosophila_melanogaster.BDGP6.54.cds.all.fa'.
+-> Unzipping downloaded file ...
+
+
+-> Starting CDS retrieval of 'Drosophila simulans' from ensembl ...
+
+
+-> The CDS has been downloaded to '/app/Results/public_datasets_output/cds_data' and has been named 'Drosophila_simulans_gca016746395v2rs.Prin_Dsim_3.1.cds.all.fa'.
+-> Unzipping downloaded file ...
+
+
+-> Starting CDS retrieval of 'Drosophila sechellia' from ensembl ...
+
+
+-> The CDS has been downloaded to '/app/Results/public_datasets_output/cds_data' and has been named 'Drosophila_sechellia_gca004382195v2rs.ASM438219v2.cds.all.fa'.
+-> Unzipping downloaded file ...
+
+
+A summary file (which can be used as supplementary information file in publications) containig retrieval information for all species has been stored at '/app/Results/public_datasets_output/cds_data/documentation/cds_data_summary.csv'.
+- List of completed organisms updated in: /app/Results/public_datasets_output/cds_data/cds_done_organisms.csv
+
+
+Please cite: Drost HG, Paszkowski J. Biomartr: genomic data retrieval with R. Bioinformatics (2017) 33(8): 1216-1217. doi:10.1093/bioinformatics/btw821.
+Warning in dir.create(prot_output_dir, recursive = T) :
+  '/app/Results/Fastas/Protein_Fastas' already exists
+Warning in dir.create(cds_output_dir, recursive = T) :
+  '/app/Results/Fastas/Nucleotide_Fastas' already exists
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 GET /page-data/app-data.json
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 Returned 304 in 19 ms
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 GET /971df74e-4f92142eb36b7429c213.js
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 Returned 304 in 5 ms
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 GET /component---src-pages-workflow-js-9ad87d7e0d72f823c048.js
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 GET /69886f3c1b1d1a9f72b5e65ea068e70d72e5fc29-b7d2cc07b95519e5104b.js
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 Returned 304 in 3 ms
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 Returned 304 in 1 ms
+Warning in dir.create(prot_output_dir, recursive = T) :
+  '/app/Results/Fastas/Protein_Fastas' already exists
+Warning in dir.create(cds_output_dir, recursive = T) :
+  '/app/Results/Fastas/Nucleotide_Fastas' already exists
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 GET /page-data/app-data.json
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 Returned 304 in 1 ms
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 GET /component---src-pages-visualization-js-26ef864d5bce96e6944e.js
+ HTTP  1/7/2026 3:35:08 PM 192.168.65.1 Returned 304 in 6 ms
+ HTTP  1/7/2026 3:35:09 PM 192.168.65.1 GET /favicon.ico
+ HTTP  1/7/2026 3:35:09 PM 192.168.65.1 Returned 304 in 10 ms
+192.168.65.1 - - [07/Jan/2026 15:35:09] "GET /visualization_options.json HTTP/1.1" 200 -
+
+OrthoFinder version 2.5.5 Copyright (C) 2014 David Emms
+
+2026-01-07 15:35:10 : Starting OrthoFinder 2.5.5
+8 thread(s) for highly parallel tasks (BLAST searches etc.)
+1 thread(s) for OrthoFinder algorithm
+
+Checking required programs are installed
+----------------------------------------
+ HTTP  1/7/2026 3:35:10 PM 192.168.65.1 GET /favicon.ico
+ HTTP  1/7/2026 3:35:10 PM 192.168.65.1 Returned 304 in 7 ms
+Test can run "mcl -h" - ok
+Test can run "fastme -i /app/Results/OrthoFinder/Results_Results/WorkingDirectory/dependencies/SimpleTest.phy -o /app/Results/OrthoFinder/Results_Results/WorkingDirectory/dependencies/SimpleTest.tre" - ok
+
+Dividing up work for BLAST for parallel processing
+--------------------------------------------------
+2026-01-07 15:35:10 : Creating diamond database 1 of 3
+2026-01-07 15:35:10 : Creating diamond database 2 of 3
+ HTTP  1/7/2026 3:35:10 PM 192.168.65.1 GET /favicon.ico
+ HTTP  1/7/2026 3:35:10 PM 192.168.65.1 Returned 304 in 10 ms
+2026-01-07 15:35:10 : Creating diamond database 3 of 3
+
+Running diamond all-versus-all
+------------------------------
+Using 8 thread(s)
+2026-01-07 15:35:11 : This may take some time....
+2026-01-07 15:35:11 : Done 0 of 9
+2026-01-07 15:40:29 : Done all-versus-all sequence search
+
+Running OrthoFinder algorithm
+-----------------------------
+2026-01-07 15:40:29 : Initial processing of each species
+2026-01-07 15:40:32 : Initial processing of species 0 complete
+2026-01-07 15:40:35 : Initial processing of species 1 complete
+2026-01-07 15:40:38 : Initial processing of species 2 complete
+2026-01-07 15:40:41 : Connected putative homologues
+2026-01-07 15:40:41 : Written final scores for species 0 to graph file
+2026-01-07 15:40:42 : Written final scores for species 1 to graph file
+2026-01-07 15:40:43 : Written final scores for species 2 to graph file
+2026-01-07 15:40:46 : Ran MCL
+
+Writing orthogroups to file
+---------------------------
+OrthoFinder assigned 42014 genes (99.2% of total) to 13192 orthogroups. Fifty percent of all genes were in orthogroups with 3 or more genes (G50 was 3) and were contained in the largest 6146 orthogroups (O50 was 6146). There were 12795 orthogroups with all species present and 12156 of these consisted entirely of single-copy genes.
+
+2026-01-07 15:40:48 : Done orthogroups
+
+Analysing Orthogroups
+=====================
+
+Calculating gene distances
+--------------------------
+2026-01-07 15:40:57 : Done
+
+Inferring gene and species trees
+--------------------------------
+2026-01-07 15:40:57 : Done 0 of 705
+2026-01-07 15:40:58 : Done 100 of 705
+2026-01-07 15:40:58 : Done 200 of 705
+2026-01-07 15:40:59 : Done 300 of 705
+2026-01-07 15:41:00 : Done 400 of 705
+2026-01-07 15:41:01 : Done 500 of 705
+2026-01-07 15:41:01 : Done 600 of 705
+
+Best outgroup(s) for species tree
+---------------------------------
+2026-01-07 15:41:03 : Starting STRIDE
+2026-01-07 15:41:03 : Done STRIDE
+Observed 23 well-supported, non-terminal duplications. 16 support the best root and 7 contradict it.
+Best outgroup for species tree:
+  Drosophila_melanogaster_prot
+
+Reconciling gene trees and species tree
+---------------------------------------
+Outgroup: Drosophila_melanogaster_prot
+2026-01-07 15:41:03 : Starting Recon and orthologues
+2026-01-07 15:41:03 : Starting OF Orthologues
+2026-01-07 15:41:03 : Done 0 of 705
+2026-01-07 15:41:04 : Done 100 of 705
+2026-01-07 15:41:04 : Done 200 of 705
+2026-01-07 15:41:04 : Done 300 of 705
+2026-01-07 15:41:04 : Done 400 of 705
+2026-01-07 15:41:04 : Done 500 of 705
+2026-01-07 15:41:04 : Done 600 of 705
+2026-01-07 15:41:05 : Done 700 of 705
+2026-01-07 15:41:05 : Done OF Orthologues
+
+Writing results files
+=====================
+2026-01-07 15:41:06 : Done orthologues
+
+Results:
+    /app/Results/OrthoFinder/Results_Results/
+
+CITATION:
+ When publishing work that uses OrthoFinder please cite:
+ Emms D.M. & Kelly S. (2019), Genome Biology 20:238
+
+ If you use the species tree in your work then please also cite:
+ Emms D.M. & Kelly S. (2017), MBE 34(12): 3267-3278
+ Emms D.M. & Kelly S. (2018), bioRxiv https://doi.org/10.1101/267914
+Test passed with 4 successes 🥇.
+Test passed with 1 success 🎉.
+Test passed with 1 success 😀.
+Test passed with 1 success 😸.
+Test passed with 1 success 🌈.
+Test passed with 1 success 😸.
+Test passed with 1 success 🎉.
+Test passed with 1 success 🌈.
+Test passed with 1 success 🥳.
+test test test<error/purrr_error_indexed>
+Error:
+ℹ In index: 1.
+Caused by error in `value[[3L]]()`:
+---
+Backtrace:
+     ▆
+  1. ├─parallel (local) workRSOCK()
+  2. │ └─parallel:::workLoop(...)
+  3. │   └─parallel:::workCommand(master)
+  4. │     ├─base::tryCatch(...)
+  5. │     │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+  6. │     │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  7. │     │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
+  8. │     ├─base::tryCatch(...)
+  9. │     │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 10. │     │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 11. │     │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 12. │     ├─base::do.call(msg$data$fun, msg$data$args, quote = TRUE)
+ 13. │     └─future (local) `<fn>`(base::quote(`<named list>`))
+ 14. │       ├─base::tryCatch(...)
+ 15. │       │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 16. │       │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 17. │       │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 18. │       └─future:::evalFutureInternal(data)
+ 19. │         ├─base::tryCatch(...)
+ 20. │         │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 21. │         │   ├─base (local) tryCatchOne(...)
+ 22. │         │   │ └─base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 23. │         │   └─base (local) tryCatchList(expr, names[-nh], parentenv, handlers[-nh])
+ 24. │         │     └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 25. │         │       └─base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 26. │         ├─base::tryCatch(...)
+ 27. │         │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 28. │         ├─base::withCallingHandlers(...)
+ 29. │         ├─base::withVisible(...)
+ 30. │         └─base::eval(expr, envir = globalenv())
+ 31. │           └─base::eval(expr, envir = globalenv())
+ 32. ├─base::local(...)
+ 33. │ └─base::eval.parent(substitute(eval(quote(expr), envir)))
+ 34. │   └─base::eval(expr, p)
+ 35. │     └─base::eval(expr, p)
+ 36. ├─BiocGenerics::eval(...)
+ 37. └─base::eval(...)
+ 38.   └─base::eval(...)
+ 39.     ├─BiocGenerics::do.call(...furrr_map_fn, args)
+ 40.     ├─base::do.call(...furrr_map_fn, args)
+ 41.     └─purrr (local) `<fn>`(.x = "dnds", .f = `<fn>`)
+ 42.       └─purrr:::map_("list", .x, .f, ..., .progress = .progress)
+ 43.         ├─purrr:::with_indexed_errors(...)
+ 44.         │ └─base::withCallingHandlers(...)
+ 45.         ├─purrr:::call_with_cleanup(...)
+ 46.         └─.f(.x[[i]], ...)
+ 47.           └─...furrr_fn(...)
+ 48.             └─base::tryCatch(...)
+ 49.               └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 50.                 └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 51.                   └─value[[3L]](cond)
+ 52.                     └─base::stop()

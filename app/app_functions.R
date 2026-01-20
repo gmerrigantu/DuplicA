@@ -93,3 +93,109 @@ add_css_style <- function() {
   "))
 }
 
+
+# Page functions for each model - return content only, not full layouts
+workflow_page <- function() {
+  tagList(
+    h3("Workflow Builder"),
+    p("The workflow feature is available in the modern web interface."),
+    p("To access the full interactive workflow builder with visual node-based construction:"),
+    tags$ol(
+      tags$li("Open your browser and navigate to ", tags$code("http://localhost:8000/Workflow")),
+      tags$li("Or use the Gatsby frontend if running in development mode")
+    ),
+    tags$div(style = "margin-top: 20px;"),
+    p("The Shiny interface provides individual model access through the sidebar buttons.")
+  )
+}
+
+orthofinder_page <- function() {
+  tagList(
+    h3("OrthoFinder"),
+    p("Phylogenetic orthology inference for comparative genomics."),
+    p("Configure and run OrthoFinder analysis on your protein sequences."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This page is under construction.")
+  )
+}
+
+dnds_page <- function() {
+  tagList(
+    h3("dN/dS Analysis"),
+    p("Calculate the ratio of nonsynonymous to synonymous substitutions."),
+    p("This analysis helps detect selection pressure on duplicate genes."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This page is under construction.")
+  )
+}
+
+segregating_duplicates_page <- function() {
+  tagList(
+    h3("Segregating Duplicates"),
+    p("Analyze segregating duplicate genes in populations."),
+    p("Uses CNVSelectR to test for selection on copy number variants."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This page is under construction.")
+  )
+}
+
+expression_shift_page <- function() {
+  tagList(
+    h3("EVE Expression Shift"),
+    p("Phylogenetic ANOVA for expression-based lineage divergence."),
+    p("Detect shifts in gene expression patterns across evolutionary lineages."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This page is under construction.")
+  )
+}
+
+diversity_divergence_page <- function() {
+  tagList(
+    h3("EVE Diversity/Divergence"),
+    p("Phylogenetic ANOVA expression-based selection test."),
+    p("Test for selection using expression diversity and divergence."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This page is under construction.")
+  )
+}
+
+blat_page <- function() {
+  tagList(
+    h3("BLAT Analysis"),
+    p("BLAST-Like Alignment Tool for sequence comparison."),
+    p("Fast sequence alignment for identifying duplicate genes."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This page is under construction.")
+  )
+}
+
+blast_page <- function() {
+  tagList(
+    h3("BLAST Analysis"),
+    p("Basic Local Alignment Search Tool."),
+    p("Identify duplicate genes through sequence similarity search."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This page is under construction.")
+  )
+}
+
+cdrom_orthofinder_tab <- function() {
+  tabPanel(
+    "OrthoFinder Input",
+    h4("CDROM with OrthoFinder Data"),
+    p("Classification of Duplicate gene Retention Mechanisms using OrthoFinder output."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This tab is under construction.")
+  )
+}
+
+cdrom_custom_tab <- function() {
+  tabPanel(
+    "Custom Input",
+    h4("CDROM with Custom Data"),
+    p("Classification of Duplicate gene Retention Mechanisms using custom duplicate gene data."),
+    tags$div(style = "margin-top: 20px;"),
+    p("This tab is under construction.")
+  )
+}
+

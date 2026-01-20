@@ -4,7 +4,13 @@
 
 
 library(biomaRt)
-library(clusterProfiler)
+# Load clusterProfiler - optional to avoid startup errors
+tryCatch({
+  library(clusterProfiler)
+}, error = function(e) {
+  # Package not available - will fail when GO functions are called
+  NULL
+})
 library(biomartr)
 
 

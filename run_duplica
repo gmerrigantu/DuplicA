@@ -21,7 +21,7 @@ fi
 
 # Run the container with or without volume mount
 docker run -it --rm \
+  --platform linux/amd64 \
   -p 8000:8000 -p 8001:8001 -p 8002:8002 \
   $VOLUME_ARG \
-  duplic-a
-
+  duplica

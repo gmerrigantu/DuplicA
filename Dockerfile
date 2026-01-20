@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     nodejs \
     npm \
+    diamond-aligner \
     libharfbuzz-dev \
     libfribidi-dev \
     libfreetype6-dev \
@@ -52,6 +53,13 @@ RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org')" 
 WORKDIR /app
 COPY app /app
 
+# Prefer system-provided diamond to avoid CPU instruction issues on emulation
+RUN mv /app/Dependencies/OrthoFinder/bin/diamond /app/Dependencies/OrthoFinder/bin/diamond_avx || true \
+ && ln -sf /usr/bin/diamond /app/Dependencies/OrthoFinder/bin/diamond
+
+# Make OrthoFinder binaries executable
+RUN chmod +x /app/Dependencies/OrthoFinder/orthofinder /app/Dependencies/OrthoFinder/bin/*
+
 WORKDIR /app/frontend/duplic-a
 RUN npm install && npm run build
 
@@ -72,5 +80,4 @@ CMD ["sh", "-c", "\
   python3 status_file_hosting.py & \
   cd frontend/duplic-a && npx serve -s public -l 8000 --no-clipboard & \
   wait"]
-
 

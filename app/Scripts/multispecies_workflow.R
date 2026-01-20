@@ -218,6 +218,16 @@ main_run_workflow <- function(selected_models, parameters) {
     prot_output_dir <- parameters$protein_folder 
     if ('dnds' %in% selected_models) {nuc_output_dir <- parameters$nuc_folder}
   }
+
+  cat(
+    "-----------",
+    "Selected Models:",
+    paste0(selected_models, collapse = ", "),
+    "-----------",
+    file = status_file_path,
+    sep = "\n",
+    append = TRUE
+  )
   
   if('OrthoFinder' %in% selected_models) {
     
@@ -244,15 +254,27 @@ main_run_workflow <- function(selected_models, parameters) {
       cat("ERROR in OrthoFinder.", message = e$message, file = status_file_path, sep = "\n", append = TRUE)
       stop()
     })
-    
-    
+
     of_output_dir <- paste0(here_results, '/OrthoFinder/Results_Results')
-    
+    if (!dir.exists(of_output_dir)) {
+      cat("ERROR in OrthoFinder.", message = "Expected OrthoFinder output directory was not created. Confirm OrthoFinder is installed and rerun.", file = status_file_path, sep = "\n", append = TRUE)
+      stop(paste0("OrthoFinder did not produce output at: ", of_output_dir))
+    }
+
     cat('OrthoFinder successfully finished!', file = status_file_path, sep = "\n", append = TRUE)
   }
   # get OrthoFinder output path when OrthoFinder not selected
   if(!('OrthoFinder' %in% selected_models)) {
     of_output_dir <- parameters$ortho_dir
+  }
+
+  if (is.null(of_output_dir) || is.na(of_output_dir) || of_output_dir == "") {
+    cat("ERROR in OrthoFinder.", message = "No OrthoFinder output directory was provided. Select the OrthoFinder model or supply an existing OrthoFinder results folder.", file = status_file_path, sep = "\n", append = TRUE)
+    stop("No OrthoFinder output directory was provided. Select the OrthoFinder model or supply an existing OrthoFinder results folder.")
+  }
+  if (!dir.exists(of_output_dir)) {
+    cat("ERROR in OrthoFinder.", message = paste0("The provided OrthoFinder output directory does not exist: ", of_output_dir), file = status_file_path, sep = "\n", append = TRUE)
+    stop(paste0("The provided OrthoFinder output directory does not exist: ", of_output_dir))
   }
   
   
@@ -273,6 +295,7 @@ main_run_workflow <- function(selected_models, parameters) {
                                          add_pseudofunc = parameters$add_pseudofunc, 
                                          missing_expr_is_zero = parameters$missing_expr_is_zero, 
                                          rm_exp_lower_than = parameters$rm_exp_lower_than)
+    cat("test test test")
   }, error = function(e) {
     cat("ERROR in formatting OrthoFinder output.", message = e$message, file = status_file_path, sep = "\n", append = TRUE)
     stop()
@@ -388,13 +411,23 @@ main_run_workflow <- function(selected_models, parameters) {
         
         if (model == 'dnds') {
           tryCatch({
+            nuc_files <- list.files(nuc_output_dir, pattern = "\\.fa(sta)?$", full.names = TRUE, ignore.case = TRUE)
+            prot_files <- list.files(prot_output_dir, pattern = "\\.fa(sta)?$", full.names = TRUE, ignore.case = TRUE)
+
+            if (length(nuc_files) == 0) {
+              stop("No nucleotide FASTA files found for dN/dS. Include CDS data (select CDS in Public Datasets or provide nuc_folder).")
+            }
+            if (length(prot_files) == 0) {
+              stop("No protein FASTA files found for dN/dS. Provide protein FASTA files.")
+            }
+
             main_multispecies_dnds(OF_dir_path = of_output_dir, dups = dups, allow_two_to_twos = parameters$allow_two_to_twos,
-                                   nuc_file_path = list.files(nuc_output_dir, full.names = T)[1],
-                                   prot_file_path = list.files(prot_output_dir, full.names = T)[1],
+                                   nuc_file_path = nuc_files[1],
+                                   prot_file_path = prot_files[1],
                                    aligner = parameters$aligner)
           }, error = function(e) {
             cat("ERROR in dN/dS.", message = e$message, file = status_file_path, sep = "\n", append = TRUE)
-            stop()
+            stop(e)
           })
           
           

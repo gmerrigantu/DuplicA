@@ -187,6 +187,16 @@ const Workflowcomponent = () => {
             const requiredList = response.data.required_parameter_list || [];
             const additionalList = response.data.additional_parameter_list || [];
 
+            // If Public Datasets is selected, the Protein Sequences upload folder should not be shown/required.
+            // (OrthoFinder will use the public dataset outputs instead.)
+            const hideProteinFolder = selectedModels.includes("Public Datasets");
+            const sidebarRequiredList = hideProteinFolder
+                ? requiredList.filter((param) => param !== "protein_folder")
+                : requiredList;
+            const sidebarAdditionalList = hideProteinFolder
+                ? additionalList.filter((param) => param !== "protein_folder")
+                : additionalList;
+
             const allParameters = [...requiredList, ...additionalList];
 
             const updatedParameters = allParameters.reduce((acc, param) => {
@@ -204,13 +214,13 @@ const Workflowcomponent = () => {
 
             setParameters(updatedParameters);
             setAvailableOptions(updatedParameters);
-            setRequiredParams(requiredList.reduce((acc, param) => {
+            setRequiredParams(sidebarRequiredList.reduce((acc, param) => {
                 if (parameterOptions[param]) {
                     acc[param] = updatedParameters[param];
                 }
                 return acc;
             }, {}));
-            setAdditionalParams(additionalList.reduce((acc, param) => {
+            setAdditionalParams(sidebarAdditionalList.reduce((acc, param) => {
                 if (parameterOptions[param]) {
                     acc[param] = updatedParameters[param];
                 }

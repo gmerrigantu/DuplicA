@@ -17,19 +17,30 @@ get_data_for_organisms <- function(selected_organisms, data_types, selected_data
 }
 
 
-get_organisms_prot_fasta_data <- function(selected_organism, prot_files) {
-  prot_file <- prot_files[grepl(selected_organism, prot_files) & grepl("\\.pep\\.", prot_files)]
-  
-  # if refseq 
-  #prot_file <- prot_files[grepl(selected_organism, prot_files) & grepl("_protein_refseq.faa", prot_files)]
+get_organisms_prot_fasta_data <- function(selected_organism, prot_files, selected_database_protein) {
+  if (selected_database_protein == 'refseq') {
+    prot_file <- prot_files[
+      grepl(selected_organism, prot_files) &
+        grepl("_protein_refseq\\.faa(\\.gz)?$", prot_files)
+    ]
+  } else {
+    prot_file <- prot_files[grepl(selected_organism, prot_files) & grepl("\\.pep\\.", prot_files)]
+  }
   prot_fasta_data <- readAAStringSet(prot_file)
   
   return(prot_fasta_data)
 }
 
 
-get_organisms_cds_fasta_data <- function(selected_organism, cds_files) {
-  cds_file <- cds_files[grepl(selected_organism, cds_files) & grepl("\\.cds\\.", cds_files)]
+get_organisms_cds_fasta_data <- function(selected_organism, cds_files, selected_database_cds) {
+  if (selected_database_cds == 'refseq') {
+    cds_file <- cds_files[
+      grepl(selected_organism, cds_files) &
+        grepl("_cds_from_genomic\\.fna(\\.gz)?$", cds_files)
+    ]
+  } else {
+    cds_file <- cds_files[grepl(selected_organism, cds_files) & grepl("\\.cds\\.", cds_files)]
+  }
   cds_fasta_data <- readDNAStringSet(cds_file)
   
   return(cds_fasta_data)
@@ -118,11 +129,18 @@ seq_df_to_fasta_files <- function(seqs_df, prot_output_dir, cds_output_dir, sele
 }
 
 
-move_genome_files <- function(selected_organism, genome_files) {
+move_genome_files <- function(selected_organism, genome_files, selected_database_genome) {
   
   
   # get the genome of the given species 
-  genome_file <- genome_files[grepl(selected_organism, genome_files) & grepl("\\.dna\\.", genome_files)]
+  if (selected_database_genome == 'refseq') {
+    genome_file <- genome_files[
+      grepl(selected_organism, genome_files) &
+        grepl("_genomic\\.fna(\\.gz)?$", genome_files)
+    ]
+  } else {
+    genome_file <- genome_files[grepl(selected_organism, genome_files) & grepl("\\.dna\\.", genome_files)]
+  }
   
   if (length(genome_file) == 0) {
     print(paste0('No genome file found for ', selected_organism))
@@ -155,8 +173,15 @@ move_genome_files <- function(selected_organism, genome_files) {
 
 main_public_datasets <- function(selected_organisms, data_types, selected_database_protein, selected_database_cds, selected_database_genome, keep_which_transcript, must_be_reference) {
   
-  selected_database_protein = 'ensembl'
-  selected_database_cds = 'ensembl'
+  if (missing(selected_database_protein) || is.null(selected_database_protein)) {
+    selected_database_protein <- 'refseq'
+  }
+  if (missing(selected_database_cds) || is.null(selected_database_cds)) {
+    selected_database_cds <- 'refseq'
+  }
+  if (missing(selected_database_genome) || is.null(selected_database_genome)) {
+    selected_database_genome <- 'refseq'
+  }
   
   prot_data_dir <- paste0(here_results, '/public_datasets_output/protein_data')
   cds_data_dir <- paste0(here_results, '/public_datasets_output/cds_data')
@@ -176,8 +201,8 @@ main_public_datasets <- function(selected_organisms, data_types, selected_databa
   for (selected_organism in selected_organisms) {
     
     # read in the fasta files for the given organism 
-    prot_fasta_data <- get_organisms_prot_fasta_data(selected_organism, prot_files)
-    cds_fasta_data <- get_organisms_cds_fasta_data(selected_organism, cds_files)
+    prot_fasta_data <- get_organisms_prot_fasta_data(selected_organism, prot_files, selected_database_protein)
+    cds_fasta_data <- get_organisms_cds_fasta_data(selected_organism, cds_files, selected_database_cds)
     
     # format the fasta data into a table. keep only one sequence per gene
     prot_seqs_df <- get_prot_transcript_seq(prot_fasta_data, keep_which_transcript = 'longest', selected_organism)
@@ -190,7 +215,7 @@ main_public_datasets <- function(selected_organisms, data_types, selected_databa
     
     # write genome fastas if selected
     if ('Genomes' %in% data_types) {
-      move_genome_files(selected_organism, genome_files)
+      move_genome_files(selected_organism, genome_files, selected_database_genome)
     }
     
   }
